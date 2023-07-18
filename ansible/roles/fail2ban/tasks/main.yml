@@ -1,0 +1,17 @@
+---
+- name: install fail2ban service
+  apt:
+    update_cache: yes
+    name: fail2ban
+    state: present
+
+- name: add the new jail.conf file with the new configuration for sshd
+  copy:
+    src: jail.conf
+    dest: /etc/fail2ban/jail.conf
+
+- name: Restart fail2ban service
+  service: 
+     name: fail2ban.service
+     enabled: true
+     state: restarted

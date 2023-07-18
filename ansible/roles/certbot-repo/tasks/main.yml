@@ -1,0 +1,17 @@
+---
+#- name: Installs the ppa:certbot/certbot repo on Ubuntu systems
+#  apt_repository:
+#    repo: 'ppa:certbot/certbot'
+#    update_cache: yes
+
+# Install certbot's Nginx package with apt-get
+#- name: "Install Nginx package with apt-get"
+#  apt: 
+#    name: python-certbot-nginx   
+#    state: present
+- name: "Install Nginx package with snap"
+  snap:
+    name: certbot
+    state: present
+    classic: yes
+

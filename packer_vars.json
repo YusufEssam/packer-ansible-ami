@@ -1,0 +1,10 @@
+{
+    "aws_access_key": "",
+    "aws_secret_key": "",
+    "vpc_region": "",
+    "instance_type": "",
+    "ssh_username": "",
+    "vault_pass": "",
+    "infra_env": ""
+  }
+  

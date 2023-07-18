@@ -1,0 +1,5 @@
+ansible_python_interpreter: /usr/bin/python3
+postfix_service_state: started
+postfix_service_enabled: yes
+postfix_inet_interfaces: all
+postfix_inet_protocols: all

@@ -1,0 +1,29 @@
+---
+- name: Ensure firewalld  is started and enabled to start at boot.
+  service: name=firewalld state=restarted enabled=yes
+
+- firewalld:
+    service: https
+    permanent: true
+    state: enabled
+  notify: restart firewalld
+
+- firewalld:
+    service: http
+    permanent: true
+    state: enabled
+  notify: restart firewalld
+
+
+- firewalld:
+    port: 10050/tcp
+    permanent: true
+    state: enabled
+  notify: restart firewalld
+
+- firewalld:
+    service: ssh
+    permanent: true
+    state: enabled
+  notify: restart firewalld
+

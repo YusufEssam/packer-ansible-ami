@@ -1,0 +1,27 @@
+---
+- hosts: all
+  become: true
+
+  pre_tasks:
+    - name: Update apt cache.
+      apt: update_cache=yes cache_valid_time=600
+  vars_files:
+    - ntp-vars/main.yml
+    - smtp-vars/main.yml
+
+  roles:
+
+    - geerlingguy.docker
+    - nginxinc.nginx
+    - install_pkgs
+    - certbot-repo
+    - fail2ban
+    - zabbix
+    - geerlingguy.ntp
+    - firewalld
+    - filebeat
+
+  post_tasks:
+    - name: restart docker
+      service: name=docker state=restarted
+

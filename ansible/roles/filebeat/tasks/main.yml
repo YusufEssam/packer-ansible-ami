@@ -1,0 +1,16 @@
+---
+- name: install filebeat
+  get_url:
+    url: https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.2.0-amd64.deb
+    dest: /tmp
+    mode: '0440'
+  tags: filebeat
+- name: continue...
+  apt:
+    deb: /tmp/filebeat-7.2.0-amd64.deb
+    state: present
+  tags: filebeat
+- include: config.yml
+#  when: filebeat_create_config | bool
+  notify: restart filebeat
+  tags: filebeat

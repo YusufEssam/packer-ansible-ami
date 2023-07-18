@@ -1,0 +1,7 @@
+---
+- name: copy files
+  copy: src=logstash.crt dest=/etc/filebeat
+- name: make directory conf.d
+  file: path=/etc/filebeat/conf.d state=directory
+- name: continue
+  copy: src=template.yml dest=/etc/filebeat/conf.d/

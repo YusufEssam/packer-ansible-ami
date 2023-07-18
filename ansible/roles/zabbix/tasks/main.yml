@@ -1,0 +1,27 @@
+---
+- name: Download zabbix agent
+  get_url:
+    url: https://repo.zabbix.com/zabbix/4.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_4.0-3+bionic_all.deb
+    dest: /tmp
+
+- name: Apt install zabbix release in Ubuntu
+  apt: deb="/tmp/zabbix-release_4.0-3+bionic_all.deb"
+
+- name: Install zabbix  package 
+  apt: 
+    name: zabbix-agent
+    update_cache: yes 
+
+- name: enable zabbix-agent service
+  shell: "systemctl enable zabbix-agent"
+
+- name: Configuration of zabbix
+  template:
+    src: zabbix.conf.j2
+    dest: /etc/zabbix/zabbix_agentd.conf
+    owner: root
+    group: root
+    mode: 0644
+
+  notify: restart zabbix-agent
+  

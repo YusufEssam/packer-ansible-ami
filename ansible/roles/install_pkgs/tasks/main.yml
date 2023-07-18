@@ -1,0 +1,22 @@
+---
+# tasks file for opsview
+- name: "Install main pkgs"
+  apt:
+    pkg:
+      - htop
+      - zip
+      - unzip
+      - curl
+      - git
+      - vim
+      - firewalld
+      - python3-pip
+      - libcurl4
+    state: present
+#- name: Ensure firewalld  is started and enabled to start at boot.
+#  service: name=firewalld state=restarted enabled=yes
+#- name: 'Install AWS CLI'
+#  pip: >
+#   name=awscli
+#   state=latest
+

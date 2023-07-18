@@ -1,0 +1,5 @@
+ansible_python_interpreter: /usr/bin/python3
+ntp_enabled: true
+ntp_timezone: Asia/Riyadh
+ntp_manage_config: false
+

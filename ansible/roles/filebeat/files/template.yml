@@ -1,0 +1,11 @@
+# you must change path and tags and change tags in elk server
+filebeat:
+- type: log
+
+  # Change to true to enable this input configuration.
+  enabled: true
+
+  # Paths that should be crawled and fetched. Glob based paths.
+  paths:
+    - /var/log/syslog
+      #tags: ["test_website"]
